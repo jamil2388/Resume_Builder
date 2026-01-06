@@ -1,0 +1,33 @@
+ML
+About The Job
+
+Mercor connects elite creative and technical talent with leading AI research labs. Headquartered in San Francisco, our investors include Benchmark, General Catalyst, Peter Thiel, Adam D'Angelo, Larry Summers, and Jack Dorsey.
+
+Position: Machine Learning Engineer
+
+Type: Hourly contractor
+
+Compensation: $14/hour
+
+Location: Remote
+
+Commitment: 20–40 hours/week
+
+Role Responsibilities
+
+Design and implement scalable ML pipelines for model training, evaluation, and continuous improvement.
+Build and fine-tune deep learning models for reasoning, code generation, and real-world decision-making.
+Collaborate with data scientists to collect and preprocess training data, ensuring quality and representativeness.
+Develop benchmarking tools that test models across reasoning, accuracy, and speed dimensions.
+Implement reinforcement learning loops and self-improvement mechanisms for agent training.
+Work with systems engineers to optimize inference speed, memory efficiency, and hardware utilization.
+
+Qualifications
+
+Must-Have
+
+Strong background in machine learning, deep learning, or reinforcement learning.
+Proficient in Python and familiar with frameworks such as PyTorch, TensorFlow, or JAX.
+Understanding of training infrastructure, including distributed training, GPUs/TPUs, and data pipeline optimization.
+Experience with MLOps tools (e.g., Weights & Biases, MLflow, Docker, Kubernetes, or Airflow).
+Experience designing custom architectures or adapting LLMs, diffusion models, or transformer-based systems.

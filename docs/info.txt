@@ -1,0 +1,4 @@
+Steps I need 
+
+
+- Run the pdflatex Resume_Jamil_XX_YY/main.tex file and modify the command to output the pdf file to the folder Pdf/Resume/ and as the same name of the parent folder of the tex file (for example - Resume_Builder/Latex/Resume/Resume_Jamil_ML_Temp/main.tex after convertion to pdf should be Resume_Builder/PDF/Resume/Resume_Jamil_ML_Tmp.pdf)

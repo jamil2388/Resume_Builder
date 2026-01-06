@@ -1,0 +1,36 @@
+# --- API Keys & Secrets ---
+.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.pytest_cache/
+
+# --- LaTeX ---
+# Exclude auxiliary files that clutter your latex folders after compilation
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.pdf
+# Note: If you want to keep your base PDF, 
+# you might move final outputs to the /pdf folder 
+# and ignore that entire folder instead:
+/pdf/
+
+# --- Operating System ---
+.DS_Store
+Thumbs.db
+
+# --- Template Output (Optional) ---
+# If you want to ignore the generated resume folders 
+# but keep your base templates, you can use patterns:
+latex/resume/Resume_Jamil_*
+!latex/resume/*_Temp/
