@@ -34,3 +34,6 @@ Thumbs.db
 # but keep your base templates, you can use patterns:
 latex/resume/Resume_Jamil_*
 !latex/resume/*_Temp/
+
+# --- Misc ---
+docs/info.txt
