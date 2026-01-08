@@ -32,8 +32,8 @@ Thumbs.db
 # --- Template Output (Optional) ---
 # If you want to ignore the generated resume folders 
 # but keep your base templates, you can use patterns:
-latex/resume/Resume_Jamil_*
-!latex/resume/*_Temp/
+!latex/resume/Resume_Jamil_*
+latex/resume/*_Temp/
 
 # --- Misc ---
 docs/info.txt
