@@ -9,6 +9,7 @@ __pycache__/
 env/
 venv/
 .pytest_cache/
+.idea/
 
 # --- LaTeX ---
 # Exclude auxiliary files that clutter your latex folders after compilation

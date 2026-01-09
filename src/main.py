@@ -2,6 +2,7 @@ import os
 from gemini_client import initialize_gemini, tailor_with_gemini
 from template_finder import locate_template_assets, extract_tex_contents
 from parser import parse_job_input
+from output_handler import process_output
 
 def get_job_context():
     """Step 1: Parse the input text file for JD and Position."""
@@ -59,13 +60,19 @@ def main():
         print("SUCCESS: Data ready for the tailoring phase.")
         print("="*40)
 
-        # New Step: The AI Brain
+        # Step 4: The AI Brain
         tailored_content = generate_tailored_content(job_info, tex_content)
 
         print("\n" + "="*40)
         print("SUCCESS: Tailored content generated.")
-        print("Sample of tailored Exp:", tailored_content['experience'][:100] + "...")
+        print("Sample of tailored Exp:\n", tailored_content['experience'][:100] + "...")
         print("="*40)
+
+        # Step 5: Output Generation - NEW!
+        output_info = process_output(assets, tailored_content)
+        
+        print(f"\nYour tailored resume is ready in: {os.path.basename(output_info['temp_folder'])}")
+        print(f"Main file: {os.path.join(output_info['temp_folder'], 'main.tex')}")
 
     except Exception as e:
         print(f"\n[ERROR]: {e}")

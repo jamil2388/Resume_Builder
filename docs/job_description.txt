@@ -1,33 +1,45 @@
-ML
-About The Job
+DA
+About the job
+Company Description The ValueExchange is more than a global market research firm. We help the capital markets make better strategic decisions. Focusing on the areas of digital assets and DLT, asset servicing, settlement cycles and investment management, we offer impartial and data-driven insights, backed by unique industry experience and engagement. For more information, visit us at www.thevalueexchange.co
 
-Mercor connects elite creative and technical talent with leading AI research labs. Headquartered in San Francisco, our investors include Benchmark, General Catalyst, Peter Thiel, Adam D'Angelo, Larry Summers, and Jack Dorsey.
 
-Position: Machine Learning Engineer
+Role Description We are seeking a motivated and detail-oriented Junior Analyst to join our team. This is an excellent entry-level opportunity for recent graduates who want to gain hands-on experience in finance and capital markets, while working closely with industry experts on high-impact projects.
+As a Junior Analyst, you will play a key role in supporting our research, benchmarking, and client deliverables, helping to shape insights that directly inform decision-making across global capital markets.
 
-Type: Hourly contractor
 
-Compensation: $14/hour
+Key Responsibilities:
 
-Location: Remote
+Collect, clean, and structure financial and market data from multiple sources.
+Conduct desk research on industry trends, post-trade infrastructure, and emerging capital market developments.
+Support survey design and analysis on critical market topics (settlements, asset servicing, digital assets, regulation, financial market infrastructure, AI etc.).
+Screen for key developments in the securities industry including new threats and trends to assist the Industry Advocacy & Insight agenda
+Assist in preparing and reviewing client-facing reports, presentations, and dashboards.
+Work directly with senior analysts and industry partners, gaining exposure to real-world capital market operations, identifying key trends in the securities and finance industry.
+Provide ad-hoc research and analysis to support ongoing projects and business development.
 
-Commitment: 20–40 hours/week
-
-Role Responsibilities
-
-Design and implement scalable ML pipelines for model training, evaluation, and continuous improvement.
-Build and fine-tune deep learning models for reasoning, code generation, and real-world decision-making.
-Collaborate with data scientists to collect and preprocess training data, ensuring quality and representativeness.
-Develop benchmarking tools that test models across reasoning, accuracy, and speed dimensions.
-Implement reinforcement learning loops and self-improvement mechanisms for agent training.
-Work with systems engineers to optimize inference speed, memory efficiency, and hardware utilization.
 
 Qualifications
 
-Must-Have
+Education: Recent graduate (Bachelor’s or Master’s degree) in Finance, Economics, Business, Engineering, Data Science, or related field.
+Strong interest in financial markets and investment operations. Basic coding skills (Python, SQL) for data handling and analysis.
+Strong data analysis, aggregation and interrogation skills
+Analytical mindset with attention to detail and accuracy.
+Solid skills in Excel and PowerPoint.
+Excellent written and spoken English.
+Self-motivated, proactive, and eager to learn.
 
-Strong background in machine learning, deep learning, or reinforcement learning.
-Proficient in Python and familiar with frameworks such as PyTorch, TensorFlow, or JAX.
-Understanding of training infrastructure, including distributed training, GPUs/TPUs, and data pipeline optimization.
-Experience with MLOps tools (e.g., Weights & Biases, MLflow, Docker, Kubernetes, or Airflow).
-Experience designing custom architectures or adapting LLMs, diffusion models, or transformer-based systems.
+
+Nice to Have
+
+Exposure to financial data platforms or tools (e.g., Bloomberg, Refinitiv).
+Prior internship or project experience in banking, asset management, or consulting including platform providers and vendors and financial market infrastructures.
+
+
+What We Offer
+
+Fully remote role with flexible hours, ideal for international candidates.
+Direct hands-on experience in finance and capital markets through live projects and client work.
+Mentorship from senior professionals with deep industry expertise.
+Opportunity to contribute to thought leadership and benchmarking initiatives shaping the future of the industry.
+Clear path for career growth into more senior analytical and client-facing roles.
+Competitive remuneration aligned with your skills and experience, with opportunities for progression as you grow in the role.
