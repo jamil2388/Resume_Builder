@@ -96,6 +96,7 @@ def compile_latex_to_pdf(temp_folder_path):
     # Get the folder name to construct PDF name
     temp_folder_name = os.path.basename(temp_folder_path)
     pdf_name = f"{temp_folder_name}.pdf"
+    generic_name = "Resume_Jamil_Ahmed.pdf"
 
     # Define paths
     main_tex = os.path.join(temp_folder_path, "main.tex")
@@ -103,6 +104,7 @@ def compile_latex_to_pdf(temp_folder_path):
     project_root = os.path.dirname(os.path.dirname(os.path.dirname(temp_folder_path)))
     pdf_output_dir = os.path.join(project_root, "output", "pdf")
     final_pdf_path = os.path.join(pdf_output_dir, pdf_name)
+    final_pdf_path_renamed = os.path.join(pdf_output_dir, generic_name) # Final file in generic name
 
     # Check if main.tex exists
     if not os.path.exists(main_tex):
@@ -113,7 +115,7 @@ def compile_latex_to_pdf(temp_folder_path):
 
     # Check if we're overwriting before compilation
     if os.path.exists(final_pdf_path):
-        print(f"⚠ Overwriting existing file: {pdf_name}")
+        print(f"Overwriting existing file: {pdf_name}")
 
     # Run pdflatex twice (standard for LaTeX)
     print(f"Compiling {temp_folder_name}/main.tex...")
@@ -156,7 +158,8 @@ def compile_latex_to_pdf(temp_folder_path):
 
         # Copy PDF to final location
         shutil.copy2(temp_pdf, final_pdf_path)
-        print(f"PDF successfully generated: {pdf_name}")
+        shutil.copy2(temp_pdf, final_pdf_path_renamed)
+        print(f"PDF successfully generated: {pdf_name} and {generic_name}")
         print(f"Output location: {pdf_output_dir}/")
 
         return final_pdf_path
