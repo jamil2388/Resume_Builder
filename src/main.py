@@ -40,12 +40,20 @@ def get_raw_content(assets):
     return extracted
 
 
-def generate_tailored_content(job_info, tex_content):
+def generate_tailored_resume(job_info, tex_content):
     """Step 4: Communicate with Gemini API."""
     client = initialize_gemini()
     tailored_data = tailor_with_gemini(client, job_info, tex_content)
 
     print("Tailoring complete. Received updated Experience and Skills.")
+    return tailored_data
+
+def generate_tailored_cover_letter(job_info, tex_content):
+    """Step 4: Communicate with Gemini API to generate the Cover Letter"""
+    client = initialize_gemini()
+    tailored_data = tailor_with_gemini(client, job_info, tex_content)
+
+    print("Tailoring complete. Received updated Cover Letter.")
     return tailored_data
 
 
@@ -66,15 +74,16 @@ def main():
         print("=" * 40)
 
         # Step 4: The AI Brain
-        tailored_content = generate_tailored_content(job_info, tex_content)
+        tailored_resume = generate_tailored_resume(job_info, tex_content)
+        # tailored_cover_letter = generate_tailored_cover_letter(job_info, tex_content)
 
         print("\n" + "=" * 40)
         print("SUCCESS: Tailored content generated.")
-        print("Sample of tailored Exp:", tailored_content['experience'][:100] + "...")
+        print("Sample of tailored Exp:", tailored_resume['experience'][:100] + "...")
         print("=" * 40)
 
         # Step 5: Output Generation - NEW!
-        output_info = process_output(assets, tailored_content)
+        output_info = process_output(assets, tailored_resume)
 
         print(f"\nYour tailored resume is ready!")
         print(f"LaTeX files: {os.path.basename(output_info['temp_folder'])}")
