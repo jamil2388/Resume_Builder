@@ -1,0 +1,31 @@
+\documentclass[11pt]{letter}
+
+\pagenumbering{gobble} % suppresses page numbering
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+\input{user_details}
+
+\vspace{1em}
+
+\input{date}
+
+\vspace{1em}
+
+\input{recruiter}
+
+\vspace{0.5em}
+
+\input{body}
+
+\vspace{1em}
+
+Sincerely, \\
+\input{username}
+
+\end{document}

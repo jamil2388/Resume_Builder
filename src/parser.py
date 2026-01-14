@@ -24,13 +24,13 @@ def parse_job_input(file_path="../docs/job_description.txt"):
         "job_description": job_description
     }
 
-def read_file(filepath):
-    with open(filepath, "r") as f:
+def read_file(file_path):
+    with open(file_path, "r") as f:
         contents = f.read()
     return contents
 
-def write_file(filepath, contents):
-    with open(filepath, "w+") as f:
+def write_file(file_path, contents):
+    with open(file_path, "w+") as f:
         f.write(contents)
     return
 

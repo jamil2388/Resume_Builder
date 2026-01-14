@@ -1,45 +1,22 @@
-DA
-About the job
-Company Description The ValueExchange is more than a global market research firm. We help the capital markets make better strategic decisions. Focusing on the areas of digital assets and DLT, asset servicing, settlement cycles and investment management, we offer impartial and data-driven insights, backed by unique industry experience and engagement. For more information, visit us at www.thevalueexchange.co
+SD
+Full job description
+Our telecom client, Bell Canada, is looking for a Python Developer to work on large scale IT projects. The ideal candidate would have a minimum of 5 years experience in this field.
 
+Key Responsibilities and Job Duties:
 
-Role Description We are seeking a motivated and detail-oriented Junior Analyst to join our team. This is an excellent entry-level opportunity for recent graduates who want to gain hands-on experience in finance and capital markets, while working closely with industry experts on high-impact projects.
-As a Junior Analyst, you will play a key role in supporting our research, benchmarking, and client deliverables, helping to shape insights that directly inform decision-making across global capital markets.
+Translate business requirements into technical solutions using Python Framework
+Develop complex data queries and processes using various tools and technologies
+Work with business analysts to understand the business requirements and translate to technical code
+Support the current production versions and help investigate issues and identify root causes and get it fixed as soon as possible
+Key Competencies and Experience:
 
-
-Key Responsibilities:
-
-Collect, clean, and structure financial and market data from multiple sources.
-Conduct desk research on industry trends, post-trade infrastructure, and emerging capital market developments.
-Support survey design and analysis on critical market topics (settlements, asset servicing, digital assets, regulation, financial market infrastructure, AI etc.).
-Screen for key developments in the securities industry including new threats and trends to assist the Industry Advocacy & Insight agenda
-Assist in preparing and reviewing client-facing reports, presentations, and dashboards.
-Work directly with senior analysts and industry partners, gaining exposure to real-world capital market operations, identifying key trends in the securities and finance industry.
-Provide ad-hoc research and analysis to support ongoing projects and business development.
-
-
-Qualifications
-
-Education: Recent graduate (Bachelor’s or Master’s degree) in Finance, Economics, Business, Engineering, Data Science, or related field.
-Strong interest in financial markets and investment operations. Basic coding skills (Python, SQL) for data handling and analysis.
-Strong data analysis, aggregation and interrogation skills
-Analytical mindset with attention to detail and accuracy.
-Solid skills in Excel and PowerPoint.
-Excellent written and spoken English.
-Self-motivated, proactive, and eager to learn.
-
-
-Nice to Have
-
-Exposure to financial data platforms or tools (e.g., Bloomberg, Refinitiv).
-Prior internship or project experience in banking, asset management, or consulting including platform providers and vendors and financial market infrastructures.
-
-
-What We Offer
-
-Fully remote role with flexible hours, ideal for international candidates.
-Direct hands-on experience in finance and capital markets through live projects and client work.
-Mentorship from senior professionals with deep industry expertise.
-Opportunity to contribute to thought leadership and benchmarking initiatives shaping the future of the industry.
-Clear path for career growth into more senior analytical and client-facing roles.
-Competitive remuneration aligned with your skills and experience, with opportunities for progression as you grow in the role.
+Must have strong, hands-on experience in Python Programming
+Familiarity with ML models such as NLU
+Experience with FastAPI is considered a strong asset
+Experience in developing high performance code in Python
+Experience in unit and performance testing
+Experience in multi-threading and database integration
+Bachelor's degree in Computer Science, Information Systems is an asset
+Good problem solving and debugging skills
+Background in a customer interfacing role
+Telecom industry experience or knowledge

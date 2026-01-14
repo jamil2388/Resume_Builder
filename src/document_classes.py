@@ -4,6 +4,7 @@ Represents Resume and Cover Letter documents with their respective components.
 Each component maps to a corresponding .tex file.
 """
 
+from parser import read_file, write_file
 
 class LatexDocument:
     """Base class for LaTeX documents with components."""
@@ -29,10 +30,14 @@ class LatexDocument:
         """
         if component_name not in self.components:
             raise ValueError(f"Unknown component: {component_name}. Valid: {list(self.components.keys())}")
-        
+
+        # Check the content in the file_path, if None, then we feed `content` from args
+        file_content = read_file(file_path)
+        print(f"the contents fetched from {file_path} is {file_content}")
+
         self.components[component_name] = {
             'path': file_path,
-            'content': content
+            'content': file_content if file_content else content
         }
     
     def get_component(self, component_name):
@@ -135,10 +140,11 @@ if __name__ == "__main__":
     
     recruiter = cover_letter.get_component('recruiter')
     print(f"Recruiter: {recruiter['path']}")
-    
+    print(f"Recruiter: {recruiter['content']}")
+
     # Test error handling
     print("\n=== Testing Error Handling ===")
     try:
-        resume.set_component('invalid_component', '/path/to/file.tex')
+        resume.set_component('random_component', '/path/to/file.tex')
     except ValueError as e:
         print(f"Caught error: {e}")
