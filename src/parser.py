@@ -1,4 +1,30 @@
 import os
+import argparse
+
+def create_parser():
+    """
+        Create an argument parser
+
+        Args:
+            Empty
+
+        Returns:
+            ArgumentParser object : None if error occurs
+    """
+    print(f"\n==Create argument parser==\n")
+    parser = argparse.ArgumentParser()
+
+    # Add positional arguments
+    parser.add_argument("jp", help = "The job position abbreviation. e.g., ML, SD, DA etc.")
+
+    # Add optional arguments
+    parser.add_argument("-jd", "--job_description", default = 1, help = "Add the job description in a popup. 1 = Add, 0 = Use existing")
+    parser.add_argument("-r", "--resume", default = 1, help = "Tailor Resume. 1 = Tailor, 0 = Ignore")
+    parser.add_argument("-cl", "--cover_letter", default = 1, help = "Tailor Cover Letter. 1 = Tailor, 0 = Ignore")
+
+    args = parser.parse_args()
+
+    return args
 
 def parse_job_input(file_path="../docs/job_description.txt"):
     """
