@@ -1,7 +1,7 @@
 import os
 from gemini_client import initialize_gemini, tailor_with_gemini
 from template_finder import locate_template_assets, extract_tex_contents
-from parser import parse_job_input
+from parser import parse_job_input, create_parser
 from output_handler import process_output
 
 
@@ -58,6 +58,9 @@ def generate_tailored_cover_letter(job_info, tex_content):
 
 
 def main():
+
+    args = create_parser()
+
     print("--- Starting Resume Tailoring Workflow ---")
     try:
         # Step 1: Input
