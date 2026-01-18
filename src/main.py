@@ -4,16 +4,9 @@ from template_finder import locate_template_assets, extract_tex_contents
 from parser import parse_job_input, create_parser
 from output_handler import process_output
 
-
-def get_job_context():
-    """Step 1: Parse the input text file for JD and Position."""
-    print("Reading job_description.txt...")
-    job_data = parse_job_input("../docs/job_description.txt")
-
-    print(f"Target Position: {job_data['job_position']}")
-    print(f"JD Length: {len(job_data['job_description'])} characters")
-    return job_data
-
+def get_job_description():
+    job_description = ""
+    return job_description
 
 def get_latex_assets(position):
     """Step 2: Find the template folder and file paths."""

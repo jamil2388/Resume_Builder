@@ -5,6 +5,7 @@ Each component maps to a corresponding .tex file.
 """
 
 from parser import read_file, write_file
+from datetime import date
 
 class LatexDocument:
     """Base class for LaTeX documents with components."""
@@ -134,10 +135,13 @@ if __name__ == "__main__":
     print("\n=== Testing CoverLetter Class ===")
     cover_letter = CoverLetter()
     print(f"CoverLetter components: {cover_letter.get_component_names()}")
-    
+
+    cover_letter.set_component('username', f"{sample_path_to_cover_letter}/username.tex", 'Jamil Ahmed')
+    cover_letter.set_component('user_details', f"{sample_path_to_cover_letter}/user_details.tex", 'Dummy User')
     cover_letter.set_component('recruiter', f"{sample_path_to_cover_letter}/recruiter.tex", 'Dear Hiring Manager')
+    cover_letter.set_component('date', f"{sample_path_to_cover_letter}/date.tex", f"{date.today()}")
     cover_letter.set_component('body', f"{sample_path_to_cover_letter}/body.tex", 'I am writing to...')
-    
+
     recruiter = cover_letter.get_component('recruiter')
     print(f"Recruiter: {recruiter['path']}")
     print(f"Recruiter: {recruiter['content']}")
