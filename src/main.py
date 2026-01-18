@@ -1,36 +1,9 @@
 import os
 from gemini_client import initialize_gemini, tailor_with_gemini
-from template_finder import locate_template_assets, extract_tex_contents
+from template_finder import locate_and_populate_document
 from parser import parse_job_input, create_parser
 from output_handler import process_output
 
-def get_job_description():
-    job_description = ""
-    return job_description
-
-def get_latex_assets(position):
-    """Step 2: Find the template folder and file paths."""
-    print("\nLocating LaTeX templates...")
-    assets = locate_template_assets(position)
-
-    print(f"Match found in folder: {os.path.basename(assets['folder_root'])}")
-    print(f"Exp file: {os.path.basename(assets['experience']) if assets['experience'] else 'Not Found'}")
-    print(f"Skills file: {os.path.basename(assets['skills']) if assets['skills'] else 'Not Found'}")
-    return assets
-
-
-def get_raw_content(assets):
-    """Step 3: Extract text from the identified .tex files."""
-    print("\nExtracting LaTeX content...")
-    extracted = extract_tex_contents(assets)
-
-    # Printing Snippets for verification
-    if extracted["experience"]["raw"]:
-        print(f"Experience Loaded: {len(extracted['experience']['raw'])} chars")
-    if extracted["skills"]["raw"]:
-        print(f"Skills Loaded: {len(extracted['skills']['raw'])} chars")
-
-    return extracted
 
 
 def generate_tailored_resume(job_info, tex_content):
@@ -56,6 +29,8 @@ def main():
 
     print("--- Starting Resume Tailoring Workflow ---")
     try:
+
+        # Start Refactor
         # Step 1: Input
         job_info = get_job_context()
 
