@@ -3,7 +3,10 @@ from google import genai
 import os
 import json
 from dotenv import load_dotenv
+from copy import deepcopy
 from document_classes import Resume, CoverLetter
+from output_handler import find_or_create_temp_folder
+from pathlib import Path
 
 
 def initialize_gemini():
@@ -38,8 +41,18 @@ def tailor_document_with_gemini(client, job_info, document_obj):
         job_info (dict): Job position and job description
         document_obj: Instance of Resume or CoverLetter with populated components
 
+            e.g., The instance would have some components in the form of multi-D dicts
+            component_names = ['experience', 'technologies'] etc. for Resume
+                              ['username', 'user_details', 'date', 'recruiter', 'body'] etc. for Cover Letter
+            Sample component for Resume object would be -
+            'experience' : {
+                'path' : "../latex/resume/Resume_Jamil_ML/experience.tex",
+                'content' : "\section{Experience}\n ............"
+            }
+
     Returns:
         dict: Dictionary with component names as keys and tailored LaTeX as values
+            e.g., dict with parsed json response from the API
     """
     # Extract component content from document
     component_content = _extract_component_content(document_obj)
@@ -61,13 +74,17 @@ def tailor_document_with_gemini(client, job_info, document_obj):
 
 def _extract_component_content(document_obj):
     """
-    Extracts content from all components in the document.
+    Extracts content from all components (e.g, 'experience', 'technologies' etc.) in the document.
 
     Args:
         document_obj: Instance of Resume or CoverLetter
 
     Returns:
         dict: Component names mapped to their content
+            e.g., content : {
+                'experience' : "\n--- EXPERIENCE ---\nA sample experience for ML role ...."
+                'technologies' : "\n--- TEHCNOLOGIES ---\nGit, Python, ....."
+            }
     """
     content = {}
 
@@ -114,16 +131,18 @@ def _build_resume_prompt(job_info, component_content):
     prompt += """
     INSTRUCTIONS:
     1. Rephrase experience bullet points to highlight JD keywords and relevant accomplishments.
-    2. Update the technologies section to prioritize technologies mentioned in the JD.
-    3. STRICT RULE: Maintain all LaTeX commands, environments (itemize, section, etc.), and special characters.
-    4. Keep the structure and formatting identical to the original.
-    5. RETURN ONLY A JSON OBJECT with keys matching the section names: "experience" and "technologies".
-    6. No conversational filler, explanations, or markdown code blocks.
+    2. Update the technologies section to prioritize tools mentioned in the JD.
+    3. STRICT RULE: Maintain all LaTeX commands, environments, and special characters.
+    4. SECTION START RULES:
+       - The "experience" value MUST start with "\\section{Experience}".
+       - The "technologies" value MUST start with "\\section{Technologies}".
+    5. JSON ESCAPING: Ensure all LaTeX backslashes are properly escaped within the JSON string (e.g., use "\\\\" for a single backslash).
+    6. RETURN ONLY A RAW JSON OBJECT. No conversational filler, no markdown formatting (no ```json blocks), and no explanations.
     
     OUTPUT FORMAT:
     {
-        "experience": "tailored LaTeX content here",
-        "technologies": "tailored LaTeX content here"
+        "experience": "\\section{Experience} ...",
+        "technologies": "\\section{Technologies} ..."
     }
     """
 
@@ -196,6 +215,42 @@ def _parse_gemini_response(response_text):
         print("[ERROR] Failed to parse Gemini response as JSON")
         print(f"Response preview: {clean_text[:200]}")
         raise ValueError(f"Invalid JSON response from Gemini: {e}")
+
+def form_document_object(object_type, document_object, response_text):
+    """
+    Forms a Resume or Cover Letter object based on the object_type
+
+    Args:
+        object_type (str): 'resume' or 'cover_letter' etc.
+        document_obj (LatexDocument): The template document object loaded previously for tailoring
+        response_text (dict): A dict containing only the tailored components in the form of keys and values
+            e.g., { 'experience': "\section{Experience} \itemSuccessfully integrated ...." ...  }
+
+    Returns:
+         resume_obj or cover_letter_obj (LatexDocument)
+    """
+    # Create a new copied LatexDocument object
+    tailored_obj = deepcopy(document_object)
+
+    # Update the original filepath to Temp filepath
+    # e.g, Resume_Jamil_ML folder changes to Resume_Jamil_ML_Temp
+    for key in tailored_obj.get_all_components().keys():
+        print(f"[DEBUG] key = {key}")
+        print(f"[DEBUG] original path = {tailored_obj.get_component(key)['path']}")
+        original_path = Path(tailored_obj.get_component(key)['path'])
+        parent_folder = original_path.parent
+        file_name = original_path.name
+        temp_path = Path(find_or_create_temp_folder(parent_folder)) / file_name
+
+        print(f"[DEBUG] temporary path : {temp_path}")
+
+    # Take the keys from the response_text, place the contents respectively to their designated places
+    # corresponding to the sample LatexDocument object
+    for key in response_text.keys():
+        print(f"[DEBUG] key = {key}")
+        tailored_obj.get_component(key)['content'] = response_text[key]
+
+    return tailored_obj
 
 
 # --- Test ---

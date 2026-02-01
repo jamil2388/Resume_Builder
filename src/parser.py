@@ -40,14 +40,29 @@ def parse_job_input(file_path="../docs/job_description.txt"):
     return job_description
 
 def read_file(file_path):
-    with open(file_path, "r") as f:
-        contents = f.read()
-    return contents
+    try:
+        with open(file_path, "r") as f:
+            contents = f.read()
+            print(f"[DEBUG] File read successful for file : {file_path}")
+        return contents
+    except FileNotFoundError:
+        print(f"Error: The folder structure for '{file_path}' does not exist.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 def write_file(file_path, contents):
-    with open(file_path, "w+") as f:
-        f.write(contents)
-    return
+    try:
+        with open(file_path, "w") as f:
+            f.write(contents)
+            print(f"[DEBUG] File write successful for file : {file_path}")
+    except FileNotFoundError:
+        print(f"Error: The folder structure for '{file_path}' does not exist.")
+    except PermissionError:
+        print(f"Error: You don't have permission to write to '{file_path}'.")
+    except TypeError:
+        print(f"Error: 'contents' must be a string, not {type(contents).__name__}.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 
 

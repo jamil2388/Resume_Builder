@@ -1,9 +1,10 @@
 import os
 import shutil
 import subprocess
+from pathlib import Path
 
 
-def find_or_create_temp_folder(base_folder_path):
+def find_or_create_temp_folder(base_folder_path, create_temp_folder = True):
     """
     Finds or creates a Temp version of the base template folder.
 
@@ -21,20 +22,21 @@ def find_or_create_temp_folder(base_folder_path):
     temp_folder_name = f"{base_folder_name}_Temp"
     temp_folder_path = os.path.join(parent_dir, temp_folder_name)
 
-    # Check if Temp folder exists
-    if os.path.exists(temp_folder_path):
-        print(f"Found existing Temp folder: {temp_folder_name}")
-        return temp_folder_path
+    if create_temp_folder:
+        # Check if Temp folder exists
+        if os.path.exists(temp_folder_path):
+            print(f"Found existing Temp folder: {temp_folder_name}")
+            return temp_folder_path
 
-    # If not, create it by copying the base folder
-    print(f"⚠ Temp folder not found. Creating: {temp_folder_name}")
-    try:
-        shutil.copytree(base_folder_path, temp_folder_path)
-        print(f"Successfully created Temp folder by copying base template")
-        return temp_folder_path
-    except Exception as e:
-        raise RuntimeError(f"Failed to create Temp folder: {e}")
-
+        # If not, create it by copying the base folder
+        print(f"Temp folder not found. Creating: {temp_folder_name}")
+        try:
+            shutil.copytree(base_folder_path, temp_folder_path)
+            print(f"Successfully created Temp folder by copying base template")
+            return temp_folder_path
+        except Exception as e:
+            raise RuntimeError(f"Failed to create Temp folder: {e}")
+    return temp_folder_path
 
 def write_tailored_content(temp_folder_path, tailored_data, original_assets):
     """
