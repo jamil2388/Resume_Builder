@@ -3,7 +3,7 @@ from gemini_client import initialize_gemini, tailor_document_with_gemini, form_d
 from document_classes import Resume, CoverLetter
 from template_finder import locate_and_populate_document
 from parser import parse_job_input, create_parser, write_file
-from output_handler import process_output
+from output_handler import compile_latex_to_pdf
 
 def resume_tailoring(args_dict):
     """
@@ -50,7 +50,6 @@ def resume_tailoring(args_dict):
         # Step 3: Generate prompt based on the object and get response
         client = initialize_gemini()
         tailored_resume = tailor_document_with_gemini(client, job_info, populated_resume_obj) # the tailored resume should contain keys and values
-        # tailored_cover_letter = generate_tailored_cover_letter(job_info, tex_content)
 
         print("\n" + "=" * 40)
         print("SUCCESS: Tailored content generated.")
@@ -64,10 +63,12 @@ def resume_tailoring(args_dict):
             print(f"[DEBUG] Writing file {component['path']} ... ")
             write_file(component['path'], component['content'])
 
+        # Compile tailored resume as pdf to the set pdf path location
+        temp_resume_path = os.path.dirname(tailored_resume_obj.get_component('experience')['path'])
+        pdf_output_path = compile_latex_to_pdf(temp_resume_path)
+
         print(f"\nYour tailored resume is ready!")
-        print(f"LaTeX files: {os.path.basename(output_info['temp_folder'])}")
-        print(f"PDF: {os.path.basename(output_info['pdf_path'])}")
-        print(f"PDF location: {os.path.dirname(output_info['pdf_path'])}/")
+        print(f"PDF : {pdf_output_path}")
 
     except Exception as e:
         print(f"\n[ERROR]: {e}")
@@ -92,9 +93,9 @@ def main():
         print("--- Starting Resume Tailoring Workflow ---")
         resume_tailoring(args_dict)
 
-    if args_dict['tailor_cover_letter']:
-        print("--- Starting Cover Letter Tailoring Workflow ---")
-        cover_letter_tailoring(args_dict)
+    # if args_dict['tailor_cover_letter']:
+    #     print("--- Starting Cover Letter Tailoring Workflow ---")
+    #     cover_letter_tailoring(args_dict)
 
 
 if __name__ == "__main__":

@@ -38,48 +38,6 @@ def find_or_create_temp_folder(base_folder_path, create_temp_folder = True):
             raise RuntimeError(f"Failed to create Temp folder: {e}")
     return temp_folder_path
 
-def write_tailored_content(temp_folder_path, tailored_data, original_assets):
-    """
-    Writes the tailored content back to the appropriate .tex files in the Temp folder.
-
-    Args:
-        temp_folder_path (str): Path to the Temp folder
-        tailored_data (dict): Dictionary with 'experience' and 'skills' keys containing tailored LaTeX
-        original_assets (dict): The asset map from locate_template_assets to identify file names
-
-    Returns:
-        dict: Paths to the updated files
-    """
-    updated_files = {}
-
-    # 1. Write Experience content
-    if tailored_data.get('experience') and original_assets.get('experience'):
-        original_exp_filename = os.path.basename(original_assets['experience'])
-        exp_target_path = os.path.join(temp_folder_path, original_exp_filename)
-
-        try:
-            with open(exp_target_path, 'w', encoding='utf-8') as f:
-                f.write(tailored_data['experience'])
-            print(f"Updated: {original_exp_filename}")
-            updated_files['experience'] = exp_target_path
-        except Exception as e:
-            print(f"Failed to write experience file: {e}")
-
-    # 2. Write Skills content
-    if tailored_data.get('skills') and original_assets.get('skills'):
-        original_skills_filename = os.path.basename(original_assets['skills'])
-        skills_target_path = os.path.join(temp_folder_path, original_skills_filename)
-
-        try:
-            with open(skills_target_path, 'w', encoding='utf-8') as f:
-                f.write(tailored_data['skills'])
-            print(f"Updated: {original_skills_filename}")
-            updated_files['skills'] = skills_target_path
-        except Exception as e:
-            print(f"Failed to write skills file: {e}")
-
-    return updated_files
-
 
 def compile_latex_to_pdf(temp_folder_path):
     """
@@ -175,61 +133,15 @@ def compile_latex_to_pdf(temp_folder_path):
         raise RuntimeError(f"PDF compilation failed: {e}")
 
 
-def process_output(base_assets, tailored_content):
-    """
-    Complete workflow to find/create Temp folder, write tailored content, and compile to PDF.
-
-    Args:
-        base_assets (dict): Asset map from locate_template_assets
-        tailored_content (dict): Tailored LaTeX content from Gemini
-
-    Returns:
-        dict: Information about the generated output
-    """
-    print("\n" + "=" * 50)
-    print("STEP: Output Generation")
-    print("=" * 50)
-
-    # Step 1: Find or create Temp folder
-    base_folder = base_assets['folder_root']
-    temp_folder = find_or_create_temp_folder(base_folder)
-
-    # Step 2: Write tailored content
-    print(f"\nWriting tailored content to Temp folder...")
-    updated_files = write_tailored_content(temp_folder, tailored_content, base_assets)
-
-    # Step 3: Compile to PDF
-    pdf_path = compile_latex_to_pdf(temp_folder)
-
-    print("\n" + "=" * 50)
-    print(f"SUCCESS: Tailored resume complete!")
-    print("=" * 50)
-
-    return {
-        'temp_folder': temp_folder,
-        'updated_files': updated_files,
-        'base_folder': base_folder,
-        'pdf_path': pdf_path
-    }
-
-
 # --- Test ---
 if __name__ == "__main__":
     # Mock test data
     mock_assets = {
         'folder_root': '../latex/resume/Resume_Jamil_ML',
+        'pdf_folder': '../output/pdf',
         'experience': '../latex/resume/Resume_Jamil_ML/experience.tex',
         'skills': '../latex/resume/Resume_Jamil_ML/technologies.tex'
     }
 
-    mock_tailored = {
-        'experience': '\\section{Experience}\n\n% Tailored content here',
-        'skills': '\\section{Technologies}\n\n% Tailored skills here'
-    }
-
-    try:
-        result = process_output(mock_assets, mock_tailored)
-        print(f"\nTemp folder: {result['temp_folder']}")
-        print(f"Updated files: {list(result['updated_files'].keys())}")
-    except Exception as e:
-        print(f"Error: {e}")
+    pdf_output_path = compile_latex_to_pdf(mock_assets['folder_root'])
+    print(pdf_output_path)
