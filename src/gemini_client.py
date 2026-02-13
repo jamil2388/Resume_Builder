@@ -241,6 +241,7 @@ def form_document_object(object_type, document_object, response_text):
         parent_folder = original_path.parent
         file_name = original_path.name
         temp_path = Path(find_or_create_temp_folder(parent_folder)) / file_name
+        tailored_obj.get_component(key)['path'] = temp_path
 
         print(f"[DEBUG] temporary path : {temp_path}")
 
