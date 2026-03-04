@@ -1,22 +1,76 @@
-SD
-Full job description
-Our telecom client, Bell Canada, is looking for a Python Developer to work on large scale IT projects. The ideal candidate would have a minimum of 5 years experience in this field.
+Job Description
+We get up every day, roll up our sleeves and build a better world -- together. At Ford, we’re all a part of something bigger than ourselves. Are you ready to change the way the world moves?
 
-Key Responsibilities and Job Duties:
+ 
 
-Translate business requirements into technical solutions using Python Framework
-Develop complex data queries and processes using various tools and technologies
-Work with business analysts to understand the business requirements and translate to technical code
-Support the current production versions and help investigate issues and identify root causes and get it fixed as soon as possible
-Key Competencies and Experience:
+Ford of Canada's operations include a national headquarters, three vehicle assembly and engine manufacturing plants, three parts distribution centres, and three Connectivity and Innovation centres. Ford employs approximately 7,000 people in Canada, while an additional 18,000 people are employees in the more than 400 Ford and Ford-Lincoln dealerships across the country. For more information, please visit www.ford.ca.
 
-Must have strong, hands-on experience in Python Programming
-Familiarity with ML models such as NLU
-Experience with FastAPI is considered a strong asset
-Experience in developing high performance code in Python
-Experience in unit and performance testing
-Experience in multi-threading and database integration
-Bachelor's degree in Computer Science, Information Systems is an asset
-Good problem solving and debugging skills
-Background in a customer interfacing role
-Telecom industry experience or knowledge
+
+Enterprise Technology plays a critical part in shaping the future of mobility. If you’re looking for the chance to leverage advanced technology to redefine the transportation landscape, enhance the customer experience and improve people’s lives, this is the opportunity for you. Join us and challenge your IT expertise and analytical skills to help create vehicles that are as smart as you are.
+
+Responsibilities
+What you’ll do
+
+Build, maintain, and improve automation that enables product teams to build, test, and deploy code efficiently and consistently.
+Help shape developer workflows and how code changes move from commit through CI/CD to production.
+Contribute to ensuring build and deployment systems meet reliability, availability, and traceability needs.
+Encourage and support adoption of common platforms and tools for observability, testing, and automation.
+Recommend and leverage cloud and on‑prem technologies for fast, reliable provisioning of build and test environments.
+Create and maintain clear documentation for build, deployment, and release processes.
+Collaborate closely with peers and senior engineers, contributing to a culture of learning, ownership, and continuous improvement.
+Qualifications
+You'll have... 
+
+
+Education
+
+Bachelor’s Degree in Computer Science or Computer Engineering (Successful candidates will be required to provide proof of degree completion for the highest level of education attained.  If the degree was obtained from a school outside of Canada, an Education Credential Assessment report showing Canadian equivalency is also required.)
+Experience
+
+Minimum 1 year of experience in software engineering, build/automation, DevOps, or tooling roles.
+Hands on experience (through work, projects, or internships) with CI/CD tools such as Jenkins, Tekton, GitHub Actions, or similar.
+Exposure to, or experience with, agile or eXtreme Programming (XP) practices (e.g., pair programming, test first / TDD), or a strong willingness to adopt these practices.
+Experience with modern software configuration management and DevOps practices (source control, branching, CI/CD, code review, etc.).
+Experience designing, implementing, building, and supporting applications or tools in Python, as well as proficiency with at least one scripting language (e.g., Bash, Ruby, etc.) to automate tasks.
+Experience working with C/C++, Java or Go codebases (development, integration, or build support).
+
+ 
+
+
+Even better, you may have...
+
+Education
+
+Master's Degree in Computer Science or Computer Engineering.
+
+Experience
+ 
+
+Experience with container and cloud infrastructure technologies such as Kubernetes, Docker, AWS, Azure, GKE, or GCP.
+Proficiency with GNU Make and/or other build tools commonly used in C/C++ or embedded environments.
+Proficiency with one or more of the following build systems: Maven, Gradle, Bazel, Ant, Jam, Buck, CMake, Ninja, Autotools.
+Proficiency with Linux or Unix-based operating systems; familiarity with developing and building in Windows is a plus.
+Understanding of object-oriented design (OOD) and object-oriented programming (OOP) principles.
+Exposure to cloud or virtualized infrastructure (on prem or public cloud).
+Adept verbal and written communication skills, with the ability to explain technical concepts to both technical and non technical audiences.
+ 
+
+This posting is for an existing vacancy within our team.
+
+ 
+
+The expected annual salary range for this Ford of Canada position is $63,000.00 - $107,000.00 ﻿and individuals may be eligible to participate in our Annual Compensation bonus program.
+
+ 
+
+Our focus is to build the best team. If you think you can bring value to Ford, love to collaborate, prioritize and aim to deliver excellence in everything you do, we encourage you to apply!
+
+ 
+
+We thank all candidates for their interest, but only those selected for an interview will be contacted.
+
+Ford of Canada is an Equal Opportunity Employer and is committed to a culturally diverse workforce. Accommodations for applicants with disabilities throughout the recruitment, selection and/or assessment processes, where needed, are available upon request. Please inform Human Resources of the nature of any accommodation(s) that you may require.
+
+Candidates for this position must be legally entitled to work in Canada. Ford Motor Company of Canada, Limited, does not sponsor work permit applications.
+
+This position is hybrid. Candidates who are in commuting distance to a Ford hub location may be required to be onsite four or more days per week.
