@@ -15,5 +15,7 @@ then go ahead for execution
 ## Milestones
 
 - Strictly revise the MILESTONES.md every time to cross-check the current point of action
-- Always mark the milestones checked whichever milestone goes successful
+- Before starting to work on a milestone, look for any line that mentions "Branch : XYZ", if that exists, then create a branch named on that and 
+start committing to that branch for that milestone / feature, otherwise ask me for naming a branch
+- Always mark the milestones checked whichever milestone goes successful, definitely upon approval
 - Explicitly mention to me the number and point of the milestone that gets checked, so that we are on the same page
