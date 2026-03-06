@@ -13,7 +13,7 @@ This file will be used to track the major milestones and development phases of t
 - [x] Implement LaTeX to PDF compilation using `pdflatex`.
 
 ## Phase 2: Expose Resume Tailoring via API
-- [ ] Branch : feature/api
+- [x] Branch : feature/api
 - [ ] Use FastAPI for the API development.
 - [ ] Create a POST endpoint (e.g., `/tailor-resume`) that accepts `job_position` and `job_description`.
 - [ ] Refactor core logic in `src/main.py` to be easily callable by the API handler.

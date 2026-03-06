@@ -2,6 +2,8 @@
 
 ## General Instructions
 
+- During the beginning of the conversation, always check the MILESTONES.md, README.md files to stay up to date 
+with the progress of the project
 - Before executing your ideas, always articulate the ideas with me. If I give you the signal,
 then go ahead for execution
 

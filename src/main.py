@@ -5,7 +5,7 @@ from template_finder import locate_and_populate_document
 from parser import parse_job_input, create_parser, write_file
 from output_handler import compile_latex_to_pdf
 
-def resume_tailoring(args_dict):
+def resume_tailoring(args_dict, job_description=None):
     """
     Creates a Resume object, populates the object with template material,
     tailors the material using API (gemini), and then replaces the tailored contents with
@@ -13,15 +13,19 @@ def resume_tailoring(args_dict):
 
     Args:
         args_dict (dict): Dict containing the necessary arguments parsed from user input
+        job_description (str, optional): The job description text. If None, it will be parsed from file.
 
-    Returns: None
+    Returns:
+        str: Path to the generated PDF file
     """
 
     try:
 
         # Start Refactor
         # Step 1: Take job description, other details are already taken through args
-        job_description = parse_job_input()
+        if job_description is None:
+            job_description = parse_job_input()
+        
         job_info = {
             'job_position' : args_dict['job_position'],
             'job_description' : job_description
@@ -72,7 +76,9 @@ def resume_tailoring(args_dict):
 
     except Exception as e:
         print(f"\n[ERROR]: {e}")
-    return
+        raise e
+    
+    return pdf_output_path
 
 def cover_letter_tailoring():
     pass
