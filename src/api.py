@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException, Request, Form, File, UploadFile
 from fastapi.responses import FileResponse
+from fastapi.concurrency import run_in_threadpool
 from pydantic import BaseModel
 from typing import Optional
 from main import resume_tailoring
 import os
+import asyncio
 
 app = FastAPI(title="Resume Builder API")
 
@@ -20,10 +22,8 @@ async def tailor_resume_api(
 ):
     """
     Endpoint to tailor a resume. 
-    Accepts:
-    1. JSON (application/json)
-    2. Form Fields (multipart/form-data)
-    3. File Upload (multipart/form-data)
+    Accepts JSON, Form Fields, or File Upload.
+    Uses run_in_threadpool to handle the long-running sync tailoring process.
     """
     try:
         content_type = request.headers.get("Content-Type", "")
@@ -33,40 +33,34 @@ async def tailor_resume_api(
 
         # Case 1: JSON
         if "application/json" in content_type:
-            try:
-                data = await request.json()
-                pos = data.get("job_position")
-                desc = data.get("job_description")
-            except Exception:
-                raise HTTPException(status_code=400, detail="Invalid JSON format")
+            data = await request.json()
+            pos = data.get("job_position")
+            desc = data.get("job_description")
 
         # Case 2 & 3: Multipart/Form-data
         elif "multipart/form-data" in content_type:
             pos = job_position
-            
-            # If a file is uploaded, use its content as the description
             if description_file:
                 file_content = await description_file.read()
                 desc = file_content.decode("utf-8")
             else:
                 desc = job_description
         
-        else:
-            raise HTTPException(status_code=415, detail="Unsupported Media Type. Use application/json or multipart/form-data")
-
-        # Validation
         if not pos or not desc:
             raise HTTPException(status_code=400, detail="Missing job_position or job_description")
 
         # Minimal args_dict for main logic
         args_dict = {
             'job_position': pos,
-            'job_description': 1,  # Placeholder
+            'job_description': 1,
             'tailor_resume': 1,
             'tailor_cover_letter': 0
         }
         
-        pdf_path = resume_tailoring(args_dict, job_description=desc)
+        print(f"[API] Starting tailoring process for {pos} in a separate thread...")
+        # run_in_threadpool takes the function and then its arguments
+        pdf_path = await run_in_threadpool(resume_tailoring, args_dict, desc)
+        print(f"[API] Tailoring complete. PDF at: {pdf_path}")
         
         if pdf_path and os.path.exists(pdf_path):
             return FileResponse(
