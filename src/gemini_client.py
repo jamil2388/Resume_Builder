@@ -131,13 +131,15 @@ def _build_resume_prompt(job_info, component_content):
     prompt += """
     INSTRUCTIONS:
     1. Rephrase experience bullet points to highlight JD keywords and relevant accomplishments.
-    2. Update the technologies section to prioritize tools mentioned in the JD.
-    3. STRICT RULE: Maintain all LaTeX commands, environments, and special characters.
-    4. SECTION START RULES:
+    2. Try your best to not repeat any keywords or phrases.
+    3. Update the technologies section to prioritize tools mentioned in the JD.
+    4. STRICT RULE: Maintain all LaTeX commands, environments, and special characters.
+    5. STRICT RULE: Maintain escaping special characters inside any latex section. (# $ % & ~ _ ^ \ { })
+    6. SECTION START RULES:
        - The "experience" value MUST start with "\\section{Experience}".
        - The "technologies" value MUST start with "\\section{Technologies}".
-    5. JSON ESCAPING: Ensure all LaTeX backslashes are properly escaped within the JSON string (e.g., use "\\\\" for a single backslash).
-    6. RETURN ONLY A RAW JSON OBJECT. No conversational filler, no markdown formatting (no ```json blocks), and no explanations.
+    7. JSON ESCAPING: Ensure all LaTeX backslashes are properly escaped within the JSON string (e.g., use "\\\\" for a single backslash).
+    8. RETURN ONLY A RAW JSON OBJECT. No conversational filler, no markdown formatting (no ```json blocks), and no explanations.
     
     OUTPUT FORMAT:
     {
@@ -248,8 +250,10 @@ def form_document_object(object_type, document_object, response_text):
     # Take the keys from the response_text, place the contents respectively to their designated places
     # corresponding to the sample LatexDocument object
     for key in response_text.keys():
+        print("-------------- Tailored Output --------------")
         print(f"[DEBUG] key = {key}")
         tailored_obj.get_component(key)['content'] = response_text[key]
+        print(f"[DEBUG] content = {tailored_obj.get_component(key)['content']}")
 
     return tailored_obj
 

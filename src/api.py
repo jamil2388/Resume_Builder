@@ -37,8 +37,8 @@ async def tailor_resume_api(
             pos = data.get("job_position")
             desc = data.get("job_description")
 
-        # Case 2 & 3: Multipart/Form-data
-        elif "multipart/form-data" in content_type:
+        # Case 2 & 3: Multipart/Form-data or URL-encoded
+        elif "multipart/form-data" in content_type or "application/x-www-form-urlencoded" in content_type:
             pos = job_position
             if description_file:
                 file_content = await description_file.read()
@@ -46,6 +46,9 @@ async def tailor_resume_api(
             else:
                 desc = job_description
         
+        else:
+            raise HTTPException(status_code=415, detail="Unsupported Media Type: Expected application/json or multipart/form-data")
+
         if not pos or not desc:
             raise HTTPException(status_code=400, detail="Missing job_position or job_description")
 
